@@ -11,6 +11,7 @@ import { CardProps } from "../dtos/CardDto";
 
 import api from "../config/api";
 import { FlatList } from "react-native";
+import { Header } from "../atomic/molecules/Header";
 
 export function Home() {
   const [equipments, setEquipments] = useState<CardProps[]>([]);
@@ -34,7 +35,12 @@ export function Home() {
 
       <FlatList
         showsVerticalScrollIndicator={false}
-        ListHeaderComponent={() => <MainBanner />}
+        ListHeaderComponent={() => (
+          <>
+            <Header text="Choose Your Bike" />
+            <MainBanner />
+          </>
+        )}
         keyExtractor={(item) => item.id}
         numColumns={2}
         data={equipments}

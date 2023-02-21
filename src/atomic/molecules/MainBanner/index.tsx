@@ -7,7 +7,7 @@ import bike from "../../../assets/img/bike.png";
 
 export function MainBanner() {
   return (
-    <Box w="100%" h="300" mt="60px">
+    <Box w="100%" h="300" mt="-6">
       <ImageBackground
         style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         resizeMode="contain"
