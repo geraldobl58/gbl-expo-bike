@@ -1,5 +1,8 @@
-import { Box } from "native-base";
 import { useEffect, useState } from "react";
+
+import { FlatList } from "react-native";
+
+import { Box } from "native-base";
 
 import { DetailBackground } from "../atomic/atoms/DetailBackground";
 
@@ -7,11 +10,13 @@ import { Card } from "../atomic/molecules/Card";
 
 import { MainBanner } from "../atomic/molecules/MainBanner";
 
+import { Header } from "../atomic/molecules/Header";
+
+import { CategoryList } from "../atomic/organism/CategoryList";
+
 import { CardProps } from "../dtos/CardDto";
 
 import api from "../config/api";
-import { FlatList } from "react-native";
-import { Header } from "../atomic/molecules/Header";
 
 export function Home() {
   const [equipments, setEquipments] = useState<CardProps[]>([]);
@@ -39,6 +44,7 @@ export function Home() {
           <>
             <Header text="Choose Your Bike" />
             <MainBanner />
+            <CategoryList />
           </>
         )}
         keyExtractor={(item) => item.id}

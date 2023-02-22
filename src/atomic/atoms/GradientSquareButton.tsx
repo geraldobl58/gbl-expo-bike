@@ -1,32 +1,32 @@
 import { TouchableOpacity } from "react-native";
 
-import { LinearGradient } from "expo-linear-gradient";
+import { Center, useTheme } from "native-base";
 
-import { Box, useTheme } from "native-base";
+import { Gradient } from "./Gradient";
 
 type GradientSquareButtonProps = {
   children: React.ReactNode;
+  isGradient?: boolean;
 };
 
-export function GradientSquareButton({ children }: GradientSquareButtonProps) {
+export function GradientSquareButton({
+  isGradient = true,
+  children,
+}: GradientSquareButtonProps) {
   const { colors } = useTheme();
 
   return (
     <TouchableOpacity>
-      <Box shadow="5">
-        <LinearGradient
-          colors={[colors.ocean[100], colors.purple[100]]}
-          style={{
-            width: 44,
-            height: 44,
-            justifyContent: "center",
-            alignItems: "center",
-            borderRadius: 10,
-          }}
-        >
-          {children}
-        </LinearGradient>
-      </Box>
+      <Center
+        shadow="5"
+        w="46px"
+        h="46px"
+        padding="2"
+        borderRadius="10px"
+        bg="primary.50:alpha.9"
+      >
+        {isGradient ? <Gradient>{children}</Gradient> : children}
+      </Center>
     </TouchableOpacity>
   );
 }
