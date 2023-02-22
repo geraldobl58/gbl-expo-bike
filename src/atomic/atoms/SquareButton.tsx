@@ -4,17 +4,15 @@ import { Center, useTheme } from "native-base";
 
 import { Gradient } from "./Gradient";
 
-type GradientSquareButtonProps = {
+type SquareButtonProps = {
   children: React.ReactNode;
   isGradient?: boolean;
 };
 
-export function GradientSquareButton({
+export function SquareButton({
   isGradient = true,
   children,
-}: GradientSquareButtonProps) {
-  const { colors } = useTheme();
-
+}: SquareButtonProps) {
   return (
     <TouchableOpacity>
       <Center

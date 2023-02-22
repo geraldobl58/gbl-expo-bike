@@ -2,7 +2,7 @@ import { Box, Icon, Text } from "native-base";
 
 import { AntDesign } from "@expo/vector-icons";
 
-import { GradientSquareButton } from "../../atoms/GradientSquareButton";
+import { SquareButton } from "../../atoms/SquareButton";
 
 type HeaderProps = {
   text: string;
@@ -20,9 +20,9 @@ export function Header({ text }: HeaderProps) {
       <Text fontSize="lg" fontWeight="bold" color="white">
         {text}
       </Text>
-      <GradientSquareButton>
+      <SquareButton>
         <Icon as={AntDesign} name="search1" color="white" />
-      </GradientSquareButton>
+      </SquareButton>
     </Box>
   );
 }
