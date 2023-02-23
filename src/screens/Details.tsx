@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import { SafeAreaView } from "react-native";
 import { useRoute } from "@react-navigation/native";
-import { Box, Image, Text } from "native-base";
+import { Box, Button, HStack, Image } from "native-base";
 
 import { CardProps } from "../dtos/CardDto";
 
 import api from "../config/api";
 
 import rectangle from "../assets/img/rectangle.png";
+import { ImagePreview } from "../atomic/atoms/ImagePreview";
+import { ButtonDetail } from "../atomic/atoms/ButtonDetail";
 
 type RouteProps = {
   itemId: string;
@@ -33,7 +34,7 @@ export function Details() {
   }, []);
 
   return (
-    <SafeAreaView>
+    <>
       <Box
         flex="1"
         position="relative"
@@ -48,7 +49,23 @@ export function Details() {
           right="0"
           bottom="0"
         />
+
+        <ImagePreview showDescription={false} image={equipment.image} />
       </Box>
-    </SafeAreaView>
+
+      <Box
+        bg="primary.100"
+        justifyContent="center"
+        p="7"
+        borderRadius={30}
+        shadow={5}
+        h="110px"
+      >
+        <HStack w="100%" justifyContent="space-between">
+          <ButtonDetail title="Desciption" />
+          <ButtonDetail title="Especification" />
+        </HStack>
+      </Box>
+    </>
   );
 }
