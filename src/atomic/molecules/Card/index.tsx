@@ -1,15 +1,26 @@
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, TouchableOpacityProps } from "react-native";
 
 import { Box, Image, Text } from "native-base";
 
-import { CardProps } from "../../../dtos/CardDto";
 import { TextAlpha50 } from "../../atoms/TextAlpha50";
 
-export function Card({ id, title, image, model, price }: CardProps) {
+import { CardProps } from "../../../dtos/CardDto";
+
+type Props = CardProps & TouchableOpacityProps;
+
+export function Card({
+  id,
+  title,
+  image,
+  model,
+  price,
+  handleRedirect,
+  ...rest
+}: Props) {
   return (
     <TouchableOpacity
       style={{ padding: 5, width: "50%", height: 240, opacity: 0.9 }}
-      onPress={() => {}}
+      {...rest}
     >
       <Box
         borderRadius="20px"

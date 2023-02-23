@@ -4,6 +4,8 @@ import { FlatList } from "react-native";
 
 import { Box } from "native-base";
 
+import { useNavigation } from "@react-navigation/native";
+
 import { DetailBackground } from "../atomic/atoms/DetailBackground";
 
 import { Card } from "../atomic/molecules/Card";
@@ -19,7 +21,15 @@ import { CardProps } from "../dtos/CardDto";
 import api from "../config/api";
 
 export function Home() {
+  const { navigate } = useNavigation();
+
   const [equipments, setEquipments] = useState<CardProps[]>([]);
+
+  function handleRedirect(id: string) {
+    navigate("Details", {
+      itemId: id,
+    });
+  }
 
   useEffect(() => {
     async function getEquipments() {
@@ -57,6 +67,7 @@ export function Home() {
             image={item.image}
             model={item.model}
             price={item.price}
+            onPress={() => handleRedirect(item.id)}
           />
         )}
       />
