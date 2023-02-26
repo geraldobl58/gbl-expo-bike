@@ -1,10 +1,10 @@
-import { Button } from "native-base";
+import { Button, IButtonProps } from "native-base";
 
-type ButtonDetailProps = {
+type ButtonDetailProps = IButtonProps & {
   title: string;
 };
 
-export function ButtonDetail({ title }: ButtonDetailProps) {
+export function ButtonDetail({ title, ...rest }: ButtonDetailProps) {
   return (
     <Button
       _pressed={{
@@ -14,6 +14,7 @@ export function ButtonDetail({ title }: ButtonDetailProps) {
       borderRadius="10"
       w="149"
       h="43"
+      {...rest}
     >
       {title}
     </Button>
