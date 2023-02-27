@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { Box, Button, HStack, Image, Text } from "native-base";
 import Animated, {
   useAnimatedStyle,
@@ -15,6 +15,7 @@ import { ImagePreview } from "../atomic/atoms/ImagePreview";
 import { ButtonDetail } from "../atomic/atoms/ButtonDetail";
 
 import rectangle from "../assets/img/rectangle.png";
+import { Header } from "../atomic/molecules/Header";
 
 type RouteProps = {
   itemId: string;
@@ -23,6 +24,8 @@ type RouteProps = {
 export function Details() {
   const [equipment, setEquipment] = useState<CardProps>({} as CardProps);
   const [toggleDescription, setToggleDescription] = useState(true);
+
+  const { goBack } = useNavigation();
 
   const cardOffset = useSharedValue(460);
 
@@ -70,8 +73,25 @@ export function Details() {
     };
   });
 
+  function handlePress() {
+    if (toggleDescription) {
+      goBack();
+      return;
+    }
+    handleAnimatedToggle();
+  }
+
   return (
     <>
+      <Box pl="20px" pr="20px">
+        <Header
+          text={equipment.title}
+          inverted={true}
+          type={toggleDescription ? "goBack" : "down"}
+          handlePress={handlePress}
+        />
+      </Box>
+
       <Box
         flex="1"
         position="relative"

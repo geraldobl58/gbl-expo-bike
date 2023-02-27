@@ -1,10 +1,10 @@
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, TouchableOpacityProps } from "react-native";
 
-import { Center, useTheme } from "native-base";
+import { Center } from "native-base";
 
 import { Gradient } from "./Gradient";
 
-type SquareButtonProps = {
+type SquareButtonProps = TouchableOpacityProps & {
   children: React.ReactNode;
   isGradient?: boolean;
 };
@@ -12,9 +12,10 @@ type SquareButtonProps = {
 export function SquareButton({
   isGradient = true,
   children,
+  ...rest
 }: SquareButtonProps) {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity {...rest}>
       <Center
         shadow="5"
         w="46px"
