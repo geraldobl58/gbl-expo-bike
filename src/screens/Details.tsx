@@ -25,7 +25,7 @@ export function Details() {
   const [equipment, setEquipment] = useState<CardProps>({} as CardProps);
   const [toggleDescription, setToggleDescription] = useState(true);
 
-  const { goBack } = useNavigation();
+  const { goBack, navigate } = useNavigation();
 
   const cardOffset = useSharedValue(460);
 
@@ -79,6 +79,10 @@ export function Details() {
       return;
     }
     handleAnimatedToggle();
+  }
+
+  function handleAddCart() {
+    navigate("Cart");
   }
 
   return (
@@ -177,7 +181,7 @@ export function Details() {
                 borderRadius="10px"
                 shadow="5"
                 bg="ocean.200"
-                onPress={() => {}}
+                onPress={handleAddCart}
               >
                 Adicionar
               </Button>
