@@ -1,9 +1,20 @@
-import { Box, Center, HStack, ScrollView, Text } from "native-base";
+import {
+  Box,
+  Button,
+  Center,
+  HStack,
+  Icon,
+  ScrollView,
+  Text,
+} from "native-base";
 import { useNavigation } from "@react-navigation/native";
+
+import { AntDesign } from "@expo/vector-icons";
 
 import { Header } from "../atomic/molecules/Header";
 import { CartItem } from "../atomic/atoms/CartItem";
 import { SectionFooterCart } from "../atomic/molecules/SectionFooterCart";
+import { SwipeableButton } from "../atomic/molecules/SwipeableButton";
 
 export function Cart() {
   const { goBack } = useNavigation();
@@ -46,6 +57,27 @@ export function Cart() {
             justifyContent="center"
             borderRadius="8px"
           >
+            <SwipeableButton
+              handleSwipe={() => alert("Aqui")}
+              leftAction={
+                <Box
+                  w="140px"
+                  justifyContent="center"
+                  bg="primary.50"
+                  borderRadius="8px"
+                />
+              }
+            >
+              <Button
+                w="40px"
+                height="40px"
+                alignItems="center"
+                justifyContent="center"
+              >
+                <Icon as={AntDesign} name="right" color="white" />
+              </Button>
+            </SwipeableButton>
+
             <Text zIndex="-1" color="white" left="50px" position="absolute">
               Finalizar
             </Text>
