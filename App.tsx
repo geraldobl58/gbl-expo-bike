@@ -7,6 +7,8 @@ import { AppRoutes } from "./src/routes/app.routes";
 import { theme } from "./src/styles/theme";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
+import { CartContextProvider } from "./src/contexts/Cart";
+
 const navigationTheme = DefaultTheme;
 navigationTheme.colors.background = theme.colors.primary[100];
 
@@ -16,7 +18,9 @@ export default function App() {
       <Box flex="1" safeAreaTop bg={theme.colors.primary[100]}>
         <GestureHandlerRootView style={{ flex: 1 }}>
           <NavigationContainer theme={navigationTheme}>
-            <AppRoutes />
+            <CartContextProvider>
+              <AppRoutes />
+            </CartContextProvider>
           </NavigationContainer>
         </GestureHandlerRootView>
       </Box>

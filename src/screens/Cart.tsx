@@ -15,9 +15,12 @@ import { Header } from "../atomic/molecules/Header";
 import { CartItem } from "../atomic/atoms/CartItem";
 import { SectionFooterCart } from "../atomic/molecules/SectionFooterCart";
 import { SwipeableButton } from "../atomic/molecules/SwipeableButton";
+import { useCart } from "../hooks/useCart";
 
 export function Cart() {
   const { goBack } = useNavigation();
+
+  const { items } = useCart();
 
   return (
     <Box p="20px" flex="1" justifyContent="space-between">
@@ -32,13 +35,13 @@ export function Cart() {
         </Box>
 
         <ScrollView showsVerticalScrollIndicator={false}>
-          {[1, 2, 3].map((item, index) => (
+          {items.map((item, index) => (
             <CartItem
               key={index}
-              image="https://i.imgur.com/zjgFbOM.png"
-              title="Bike"
-              price="95451321"
-              amount="1"
+              image={item.image}
+              title={item.title}
+              price={item.price}
+              amount={item.price}
             />
           ))}
         </ScrollView>
